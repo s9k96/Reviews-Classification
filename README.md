@@ -15,7 +15,8 @@ We should try multiple models once a baseline training-prediction-deployment cyc
 ## 3. Deployment tools:
 #### 1. Gradio: `gradio.app`
 
-<img src="https://user-images.githubusercontent.com/13352807/87321637-1e9bcc00-c54a-11ea-8f63-828d58cbaa8c.png" width="85%"></img> <img src="https://user-images.githubusercontent.com/13352807/87321841-5b67c300-c54a-11ea-9975-9e3dfbb12dca.png" width="85%"></img> 
+<img src="https://user-images.githubusercontent.com/13352807/87414236-19418e80-c5e9-11ea-9ee4-79ec994e63d8.gif" width="85%"></img> 
+<img src="https://user-images.githubusercontent.com/13352807/87414311-3b3b1100-c5e9-11ea-8d34-c9761fa5be24.gif" width="85%"></img> 
 
 #### 2. Strealmit: `streamlit.io` 
 #### 3. FastAPIL `fastapi.tiangolo.com`
