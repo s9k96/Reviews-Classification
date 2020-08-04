@@ -1,10 +1,11 @@
 import torch
-import tensorflow as tf
+# import tensorflow as tf
 import pandas as pd
 import config
 import dataset
 import io
 import psutil 
+from tokenizer import Tokenizer
 
 def load_vectors(fname):
     # taken from: https://fasttext.cc/docs/en/english-vectors.html
@@ -31,15 +32,15 @@ def run(df, fold):
     print(len(train_df))
     print(len(valid_df))
 
-    tokenizer = tf.keras.preprocessing.text.Tokenizer()
-    tokenizer.fit_on_texts(df.review.values.tolist())
+    tokenizer = Tokenizer()
+    tokenizer.fit_on_texts(df.review.values.tolist(), info=True)
 
     xtrain = tokenizer.texts_to_sequences(train_df.review.values)
     xtest = tokenizer.texts_to_sequences(valid_df.review.values)
 
 
-    xtrain = tf.keras.preprocessing.sequence.pad_sequences(xtrain, maxlen=config.MAX_LEN)
-    xtest = tf.keras.preprocessing.sequence.pad_sequences(xtest, maxlen=config.MAX_LEN)
+    xtrain = tokenizer.pad_sequences(xtrain)
+    xtest = tokenizer.pad_sequences(xtest)
 
     train_dataset = dataset.Dataset(
         reviews = xtrain, 
@@ -65,7 +66,7 @@ def run(df, fold):
     print(psutil.virtual_memory())
 
     del df, xtrain, xtest
-    embedding_dict = load_vectors('../models/crawl-300d-2M.vec')
+    # embedding_dict = load_vectors('../models/crawl-300d-2M.vec')
 
 if __name__ == '__main__':
     print(psutil.virtual_memory())
