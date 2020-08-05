@@ -39,8 +39,10 @@ def run(df, fold):
     xtest = tokenizer.texts_to_sequences(valid_df.review.values)
 
 
-    xtrain = tokenizer.pad_sequences(xtrain)
-    xtest = tokenizer.pad_sequences(xtest)
+    xtrain = tokenizer.pad_sequences(xtrain, max_len = 1805)
+    xtest = tokenizer.pad_sequences(xtest, max_len = 1805)
+    print(xtrain.shape)
+    print(xtest.shape)
 
     train_dataset = dataset.Dataset(
         reviews = xtrain, 

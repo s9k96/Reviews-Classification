@@ -45,14 +45,14 @@ class Tokenizer:
 
     
     
-    def pad_sequences(self, tokens):
+    def pad_sequences(self, tokens, max_len):
         '''
         tokens: np.array. output from texts_to_sequence
         '''
-        max_len = max([len(i) for i in tokens])
+        # max_len = max([len(i) for i in tokens])
         data = np.zeros(shape = (len(tokens), max_len))
         for i, line in enumerate(tokens):
-            line = np.array(line)
+            line = np.array(line)[:max_len]
             length_of_line  = len(line)
             # print(length_of_line, max_len-length_of_line)
             a = np.array([0]*(max_len-length_of_line))
